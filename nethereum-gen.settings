@@ -1,0 +1,7 @@
+{
+    "projectName": "Solidity.Samples",
+    "namespace": "Solidity.Samples",
+    "lang":0,
+    "autoCodeGen":true,
+    "projectPath": "../SoliditySamples"
+}
