@@ -1,0 +1,4 @@
+{
+    "eth-abi-interactive.privateKeysFile": "/home/vboxuser/.eth-abi-interactive/keys.json",
+    "eth-abi-interactive.nodeURI": "http://localhost:8545"
+}
