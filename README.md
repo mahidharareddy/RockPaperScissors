@@ -1,1 +1,1 @@
-# rps
+# RockPaperScissors
