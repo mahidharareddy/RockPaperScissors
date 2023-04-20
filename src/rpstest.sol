@@ -110,8 +110,15 @@ contract RockPaperScissors {
 
     }
 
-     function getRegisterValue() public view returns (uint256){
-        return registerOutputValue;
+    function getRegisterValue() public view returns (string memory){
+        if (registerOutputValue == 1)
+        {
+            return "Registration Successful. Wait for the opponent to join.";
+        }
+        else if (registerOutputValue == 2)
+        {
+            return "Registration successful. Play the game.";
+        }
     }
 
     /**************************/
@@ -163,8 +170,15 @@ contract RockPaperScissors {
 
     }
 
-    function getPlayOutput() public view returns (bool){
-        return PlayOutputValue;
+    function getPlayOutput() public view returns (string memory){
+        if (PlayOutputValue == true)
+        {
+            return "Successfully stored the move";
+        }
+        else
+        {
+            return "Failed to store the play move";
+        }
     }
     
     /**************************/
@@ -264,8 +278,22 @@ contract RockPaperScissors {
         // return move;
     }
 
-    function getRevealOutput() public view returns (uint){
-        return uint(RevealOutputValue);
+    function getRevealOutput() public view returns (string memory){
+        if (uint(RevealOutputValue) == 0)
+        {
+            return "Invalid";
+        }
+        if (uint(RevealOutputValue) == 1)
+        {
+            return "Revealed: Rock";
+        }
+        if (uint(RevealOutputValue) == 2)
+        {
+            return "Revealed: Paper";
+        }
+        else{
+            return "Revealed: Scissors";
+        }        
     }
 
     // Return first character of a given string.
@@ -319,7 +347,7 @@ contract RockPaperScissors {
     // Compute the outcome and pay the winner(s).
     // Return the outcome.
     function getOutcome() public revealPhaseEnded returns (Outcomes) {
-        console.log("RevealPhaseEnded modifier executed successfully");
+        //console.log("RevealPhaseEnded modifier executed successfully");
         Moves Player1move = Moves.None;
         Moves Player2move = Moves.None;
         address payable myoutcomeaddress;
@@ -350,10 +378,10 @@ contract RockPaperScissors {
                 break;
             }
         }
-        console.log("P1 move");
-        console.log(uint(Player1move));
-        console.log("P2 move");
-        console.log(uint(Player2move));
+        // console.log("P1 move");
+        // console.log(uint(Player1move));
+        // console.log("P2 move");
+        // console.log(uint(Player2move));
         
         if (Player1move == Player2move)
         {
@@ -390,8 +418,23 @@ contract RockPaperScissors {
         return outcome;
     }
 
-    function getFinalOutput() public view returns (uint){
-        return uint(FirstOutputValue);
+    function getFinalOutput() public view returns (string memory){
+        if (uint(FirstOutputValue) == 0)
+        {
+            return "Invalid";
+        }
+        if (uint(FirstOutputValue) == 1)
+        {
+            return "Player 1 won";
+        }
+        if (uint(FirstOutputValue) == 2)
+        {
+            return "Player 2 won";
+        }
+        if (uint(FirstOutputValue) == 3)
+        {
+            return "Game Drawn";
+        }                        
     }
 
     // Pay the winner(s).
@@ -512,7 +555,7 @@ contract RockPaperScissors {
     }
 
     // Return 'true' if both players have commited a move, 'false' otherwise.
-    function bothPlayed() public view returns (uint) {
+    function bothPlayed() public view returns (bool) {
         address Opponentaddress = address(0x0);
         bool flag = false;
         for (uint i = 0; i < listOfPlayers.length; i++) {
@@ -528,14 +571,14 @@ contract RockPaperScissors {
                 if (myStruct.encryptedMove == 0x0)
                 {
                     console.log("you didnt play1");
-                    return 0;
+                    return false;
                 }
             }
         }
         if (flag == false)
         {
             console.log("you didnt register2");
-            return 0;
+            return false;
         }
         bool flag1 = false;
         for (uint i = 0; i < listOfPlayers.length; i++) {
@@ -547,17 +590,17 @@ contract RockPaperScissors {
                 if (myStruct.encryptedMove == 0x0)
                 {
                     console.log("opponent didnt play3");
-                    return 0;
+                    return false;
                 }
             }
         }
         if (flag1 == false)
         {
             console.log("opponent didnt register4");
-            return 0;
+            return false;
         }
         console.log("Success5");
-        return 1;
+        return true;
 
 
         //return (encrMovePlayerA != 0x0 && encrMovePlayerB != 0x0);
@@ -621,5 +664,22 @@ contract RockPaperScissors {
             return int((firstReveal + REVEAL_TIMEOUT) - block.timestamp);
         }
         return int(REVEAL_TIMEOUT);
+    }
+
+    //check if the opponent joined
+    function opponentJoined() public view returns (bool)
+    {
+        for (uint i = 0; i < listOfPlayers.length; i++)
+        {
+            if (listOfPlayers[i].MyAddr == msg.sender)
+            {
+                if (listOfPlayers[i].OppAddr != address(0x0))
+                {
+                    return true;
+                }
+            }    
+
+        }
+        return false;
     }
 }
