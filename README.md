@@ -38,15 +38,30 @@ If no player shows up until 10 minutes of registration, the player gets back the
 
 ### Commit Phase
 When both the players are registered successfully, they can make a move. The `play()` function takes in a hash of the cleartext and stores it in the contract. In order to simplify this, we have used the SHA256 function in the front end to convert the cleartext that the user provides into a hash. This hash is then sent to the contract. Once a player makes a move, they can check if the opponent has played the game. If the opponent hasn't played the game for 10 minutes, the game is reset and the players get their deposit back. 
-Two helper functions are used to support this usecase. The `bothPlayed()` function checks if both the players have played their game and returns a boolean value. The `checkTimeout()` function checks if the other player hasn't made a move within 10 minutes of the initial player's move and returns the deposit if that is the case.
+Two helper functions are used to support this usecase. The `bothPlayed()` function checks if both the players have played their game and returns a boolean value. The `checkTimeout_play()` function checks if the other player hasn't made a move within 10 minutes of the initial player's move and returns the deposit if that is the case.
 
 ### Reveal Phase
-
+The reveal phase begins once both the players have committed their moves. A player reveals what he has played by sending their move in clear text. The contract then checks if the revealed move is same as the hash from the previous step. If they're equal, the first character of the string is stored and the contract waits for the other player to reveal their move.
+If the other player doesn't reveal their move within 10 minutes, the game gets concluded with the contract deciding the transfer of balances. Two helper functions are used to support this usecase. The `bothRevealed()` function checks if both the players have reevaled their move and returns a boolean value. The `checkTimeout_reveal()` function checks if the other player hasn't revealed their move within 10 minutes of the initial player's move and transfers the bet if that is the case.
 
 ### Result Phase
+When the reveal phase ends, any of the player can trigger the function `getOutcome()` to make the contract sends the rewards. The winner, if there is any, takes it all. In case of a draw, players get their bet back. A player that has not previously revealed its move has automatically lost. Once this function is called, the game is reset. This prevents any re-entrancy attacks on the contract.
 
 ### Helper Functions
+At any time, players have access to public state variables and helper functions to get information about the state of the game.
 
+Functions available are:
+* `getContractBalance()`: to see the current value of the betting pool between the two players in the game.
+* `whoAmI()`: to see their player's ID: 0 or 1 if they are indeed registered or 10000 if they're not.
+* `bothPlayed()`: returns `true` if both players have played and that they're now able to go to the reveal phase.
+* `bothRevealed()`: returns `true` if both players have revealed their move and that the contract is ready to send out the reward.
+* `opponentJoined()`: returns `true` if the opponent has joined the game and set a bet amount greater than the minimum value.
+* `checkTimeout_Register()`: checks if there's time left for the opponent to register before getting a timeout. In case of timeout, the bet amount is returned to the user.
+* `checkTimeout_Play()`: checks if there's time left for the opponent to play before getting a timeout. In case of timeout, the bet amount is returned to the users.
+* `checkTimeout_Reveal()`: checks if there's time left for the opponent to reveal before getting a timeout. In case of timeout, the bet amount is returned to the user that wins the game.
+
+Public state variables are:
+* `BET_MIN`: the minimal amount to be sent to the contract in order to register. Currently set to 0.01 ETH.
 
 ## How to run the project
 
