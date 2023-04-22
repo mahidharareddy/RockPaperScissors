@@ -27,4 +27,25 @@ This smart contract implements Rock Paper Scissors game using Solidity. The fron
 
 ## Implementation
 
+### Registration Phase
+
+
+### Commit Phase
+
+### Reveal Phase
+
+### Result Phase
+
+## Helper Functions
+
+
+## How to run the project
+
+## Testing using Foundry
+
+
+## Adversaries
+
+## Future Work
+
 
