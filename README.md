@@ -10,6 +10,10 @@
     * [Reveal Phase](#reveal-phase)
     * [Result Phase](#result-phase)
     * [Helper Functions](#helper-functions)
+* [How to run the project](#how-to-run-the-project)
+* [Testing using Foundry](#testing-using-foundry)
+* [Adversaries](#adversaries)
+* [Future Work](#future-work) 
 
 ## Description
 This smart contract implements Rock Paper Scissors game using Solidity. The front end application is built using React and this makes it easier for an end user to interact with the smart contract. The game follows the following sequence:
@@ -28,15 +32,20 @@ This smart contract implements Rock Paper Scissors game using Solidity. The fron
 ## Implementation
 
 ### Registration Phase
-
+A player can register using their wallet address. The React application provides a user-friendly way to interact with the smart contract. If the bet value is greater than the minimum bet set by the contract (currently 0.01 ETH), the player will be registered. 
+Once a player is registered, the contract checks if there is another player waiting for an opponent. If this is the case, the contract maps both the players so they can start a game. Otherwise, the player will be put on hold until a new player joins. 
+If no player shows up until 10 minutes of registration, the player gets back their bet amount from the contract.
 
 ### Commit Phase
+When both the players are registered successfully, they can make a move. The `play()` function takes in a hash of the cleartext and stores it in the contract. In order to simplify this, we have used the SHA256 function in the front end to convert the cleartext that the user provides into a hash. This hash is then sent to the contract. Once a player makes a move, they can check if the opponent has played the game. If the opponent hasn't played the game for 10 minutes, the game is reset and the players get their deposit back. 
+Two helper functions are used to support this usecase. The `bothPlayed()` function checks if both the players have played their game and returns a boolean value. The `checkTimeout()` function checks if the other player hasn't made a move within 10 minutes of the initial player's move and returns the deposit if that is the case.
 
 ### Reveal Phase
 
+
 ### Result Phase
 
-## Helper Functions
+### Helper Functions
 
 
 ## How to run the project
