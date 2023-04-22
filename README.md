@@ -28,6 +28,10 @@ This smart contract implements Rock Paper Scissors game using Solidity. The fron
 3. Once both the players have played their game, they can reveal their moves by using the `reveal(string memory)` function. The input given to this function is clear text. This is compared to the previously submitted hash. If both the values match, the contract marks the move as revealed and waits for the other player to reveal their move.
 4. We use the `getOutcome()` function to conclude the game and the contract takes care of sending the bet amount to the winner. In case of a draw, the contract transfers the amounts back to the players.
 
+<p align="center">
+<img src="images/Front-end-application.jpg" width="90%" height="90%" />
+</p>
+
 ## Implementation
 
 ### Registration Phase
@@ -35,16 +39,31 @@ A player can register using their wallet address. The React application provides
 Once a player is registered, the contract checks if there is another player waiting for an opponent. If this is the case, the contract maps both the players so they can start a game. Otherwise, the player will be put on hold until a new player joins. 
 If no player shows up until 10 minutes of registration, the player gets back their bet amount from the contract.
 
+<p align="center">
+<img src="images/Registration-phase.jpg" width="70%" height="70%" />
+</p>
+
 ### Commit Phase
 When both the players are registered successfully, they can make a move. The `play()` function takes in a hash of the cleartext and stores it in the contract. In order to simplify this, we have used the SHA256 function in the front end to convert the cleartext that the user provides into a hash. This hash is then sent to the contract. Once a player makes a move, they can check if the opponent has played the game. If the opponent hasn't played the game for 10 minutes, the game is reset and the players get their deposit back. 
 Two helper functions are used to support this usecase. The `bothPlayed()` function checks if both the players have played their game and returns a boolean value. The `checkTimeout_play()` function checks if the other player hasn't made a move within 10 minutes of the initial player's move and returns the deposit if that is the case.
+
+<p align="center">
+<img src="images/Play-phase.jpg" width="70%" height="70%" />
+</p>
 
 ### Reveal Phase
 The reveal phase begins once both the players have committed their moves. A player reveals what he has played by sending their move in clear text. The contract then checks if the revealed move is same as the hash from the previous step. If they're equal, the first character of the string is stored and the contract waits for the other player to reveal their move.
 If the other player doesn't reveal their move within 10 minutes, the game gets concluded with the contract deciding the transfer of balances. Two helper functions are used to support this usecase. The `bothRevealed()` function checks if both the players have reevaled their move and returns a boolean value. The `checkTimeout_reveal()` function checks if the other player hasn't revealed their move within 10 minutes of the initial player's move and transfers the bet if that is the case.
 
+<p align="center">
+<img src="images/Reveal-Phase.jpg" width="70%" height="70%" />
+</p>
+
 ### Result Phase
 When the reveal phase ends, any of the player can trigger the function `getOutcome()` to make the contract sends the rewards. The winner, if there is any, takes it all. In case of a draw, players get their bet back. A player that has not previously revealed its move has automatically lost. Once this function is called, the game is reset. This prevents any re-entrancy attacks on the contract.
+<p align="center">
+<img src="images/Outcome-phase.jpg" width="70%" height="70%" />
+</p>
 
 ### Helper Functions
 At any time, players have access to public state variables and helper functions to get information about the state of the game.
