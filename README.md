@@ -10,8 +10,7 @@
     * [Reveal Phase](#reveal-phase)
     * [Result Phase](#result-phase)
     * [Helper Functions](#helper-functions)
-* [How to run the project](#how-to-run-the-project)
-* [Testing using Foundry](#testing-using-foundry)
+* [How to test and run the project](#how-to-test-and-run-the-project)
 * [Adversaries](#adversaries)
 * [Future Work](#future-work) 
 
@@ -63,9 +62,20 @@ Functions available are:
 Public state variables are:
 * `BET_MIN`: the minimal amount to be sent to the contract in order to register. Currently set to 0.01 ETH.
 
-## How to run the project
-
-## Testing using Foundry
+## How to test and run the project
+1. Clone this repository
+`git clone https://github.com/mahidharareddy/RockPaperScissors.git`
+2. Install Foundry and start anvil to run a local blockchain.
+`anvil`
+3. If the code is modified depending on your requirements, use forge to create a new contract and modify the contract address in the MyComponent.js file.
+`forge create --rpc-url http://localhost:8545 --private-key <private-key>  src/RockPaperScissors.sol:RockPaperScissors`
+4. Also, generate an ABI if the solidity code is modified, and paste this in the MyComponent.js file.
+5. Navigate to the front end application folder and install all dependencies.
+`npm install`
+6. Now start the server.
+`npm start`
+7. Now the application can be opened and tested. This uses a metamask extension, so make sure you have the extension installed on the browser.
+`https://127.0.0.1/8545`
 
 
 ## Adversaries
