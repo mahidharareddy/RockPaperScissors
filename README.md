@@ -79,7 +79,8 @@ Public state variables are:
 
 
 ## Adversaries
+If the players play the game with a bet amount that is exceptionally high, there is a risk of miners delaying the transaction for their own benefit. Since the inclusion of transactions on a block is in the hands of miners, they could be playing as an opponent in the game and prevent the other player's transaction from being included in the block. Since we used the timeout mechanism which uses the latest mined block's timestamp, there is a risk of the genuine player failing to get their transaction approved even though they submit their move within the specified time.
 
 ## Future Work
-
+The game could be modified to make use of state channels. State channels are a technique for performing transactions and other state updates “off chain”. Using the state channels, the players can get benefitted from paying huge gas fee for every move they make on chain. Both the players can start and play their game off-chain. This can reduce transaction costs and enhance faster transactions whilst maintaining the security equivalent to on-chain. In case of any conflicts, the players could always fall back to on-chain as the smart contract is deployed there. They can get their conflicts or issues resolved using the main chain. 
 
