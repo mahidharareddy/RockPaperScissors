@@ -11,7 +11,7 @@ contract RockPaperScissors {
     uint constant public REVEAL_TIMEOUT = 10 minutes;  // Max delay of revelation phase
     uint public initialBet;                            // Bet of first player
     uint private firstReveal;                          // Moment of first reveal
-
+    uint public timeout = 600;
     // Players' addresses
     address payable playerA;
     address payable playerB;
@@ -27,6 +27,9 @@ contract RockPaperScissors {
         bytes32 encryptedMove;
         Moves movePlayer;
         //uint revealTimeRemaining;
+        uint timeout_register;
+        uint timeout_play;
+        uint timeout_reveal;
     }
 
     // The list of players
@@ -85,7 +88,8 @@ contract RockPaperScissors {
         //     return 2;
         // }
         //return 0;
-        listOfPlayers.push(Player(msg.sender, address(0x0), msg.value, 0x0, Moves.None));
+        console.log("Initial", getContractBalance());
+        listOfPlayers.push(Player(msg.sender, address(0x0), msg.value, 0x0, Moves.None,0,0,0));
         console.log(listOfPlayers.length);
         //console.log(listOfPlayers[1]);
 
@@ -97,6 +101,19 @@ contract RockPaperScissors {
             //console.log(listOfPlayers[0].OppAddr);
             //console.log(listOfPlayers[0].MyAddr);
             //console.log(listOfPlayers[0].bet);
+            listOfPlayers[listOfPlayers.length - 1].timeout_register = block.timestamp;
+            if (listOfPlayers[listOfPlayers.length - 1].timeout_register - listOfPlayers[listOfPlayers.length - 2].timeout_register > timeout)
+            {
+                address payable addrA;
+                address payable addrB;
+                addrA = payable(listOfPlayers[listOfPlayers.length - 1].MyAddr);
+                addrB = payable(listOfPlayers[listOfPlayers.length - 2].MyAddr);
+                addrA.transfer(listOfPlayers[listOfPlayers.length - 1].bet);
+                addrB.transfer(listOfPlayers[listOfPlayers.length - 2].bet); 
+                //addrA.transfer(listOfPlayers[index1].bet);
+                //addrB.transfer(listOfPlayers[index2].bet);
+                reset();
+            }
             registerOutputValue = 2;
             return 2;     
         }
@@ -105,6 +122,7 @@ contract RockPaperScissors {
         //console.log(listOfPlayers[0].bet);
         //console.log(listOfPlayers[0].encryptedMove);
         //console.log(listOfPlayers[0].movePlayer);
+        listOfPlayers[listOfPlayers.length - 1].timeout_register = block.timestamp;
         registerOutputValue = 1;
         return 1;
 
@@ -481,16 +499,23 @@ contract RockPaperScissors {
                 break;
             }
         }
-        for (uint i = 0; i < listOfPlayers.length;i++)
+        if (opponentresetaddress != address(0x0))
         {
-            if (opponentresetaddress == listOfPlayers[i].MyAddr)
+            for (uint i = 0; i < listOfPlayers.length;i++)
             {
-                index2 = i;
-                break;
+                if (opponentresetaddress == listOfPlayers[i].MyAddr)
+                {
+                    index2 = i;
+                    break;
+                }
             }
+            delete listOfPlayers[index1];
+            delete listOfPlayers[index2];
         }
-        delete listOfPlayers[index1];
-        delete listOfPlayers[index2];
+        else{
+            delete listOfPlayers[index1];
+        }
+
         // initialBet      = 0;
         // firstReveal     = 0;
         // playerA         = payable(address(0x0));
@@ -682,4 +707,131 @@ contract RockPaperScissors {
         }
         return false;
     }
+    function checkTimeout_register() public returns (string memory)
+    {
+        uint myregistertime;
+        uint oppregistertime;
+        address oppAdr = address(0x0);
+        uint index1;
+        uint index2;
+        bool flag = false;
+        for (uint i = 0; i < listOfPlayers.length; i++)
+        {
+            if (listOfPlayers[i].MyAddr == msg.sender)
+            {
+                myregistertime = listOfPlayers[i].timeout_register;
+                index1 = i;
+                flag = true;
+                oppAdr = listOfPlayers[i].OppAddr;
+                break;
+            }
+        }
+        if (flag == false)
+        {
+            return "Register your game";
+        }
+        if (oppAdr != address(0x0))
+        {
+            for (uint i = 0; i < listOfPlayers.length; i++)
+            {
+                if (listOfPlayers[i].MyAddr == oppAdr)
+                {
+                    index2 = i;
+                    oppregistertime = listOfPlayers[i].timeout_register;
+                    break;
+                }
+            }
+
+            if (oppregistertime - myregistertime > 20)
+            {
+                address payable addrA;
+                address payable addrB;
+                addrA = payable(listOfPlayers[index1].MyAddr);
+                addrB = payable(listOfPlayers[index2].MyAddr);
+                addrA.transfer(listOfPlayers[index1].bet);
+                addrB.transfer(listOfPlayers[index2].bet);
+                reset();
+                return "Timeout - returned the balances to your account";
+            }
+            else
+            {
+                return "There's time left";
+            }
+        }
+        else {
+            address payable addrA;
+            addrA = payable(listOfPlayers[index1].MyAddr);
+            console.log(listOfPlayers[index1].MyAddr);
+            console.log("Before", getContractBalance());
+                console.log(addrA);
+                //addrA.transfer(listOfPlayers[index1].bet);
+                refund(addrA, listOfPlayers[index1].bet);
+                console.log("After", getContractBalance());
+                console.log("Returned money");
+                //reset();
+                return "Timed out, no opponent matched. Returing your deposit.";
+          
+            /*if (block.timestamp - myregistertime > 20)
+            {
+                address payable addrA;
+                addrA = payable(listOfPlayers[index1].MyAddr);
+                console.log(listOfPlayers[index1].MyAddr);
+                //addrA = payable(msg.sender);
+                //addrA.transfer(listOfPlayers[index1].bet);
+                //addrA.transfer(listOfPlayers[index1].bet);
+                console.log("Before", getContractBalance());
+                console.log(addrA);
+                //addrA.transfer(listOfPlayers[index1].bet);
+                refund(addrA, listOfPlayers[index1].bet);
+                console.log("After", getContractBalance());
+                console.log("Returned money");
+                reset();
+                return "Timed out, no opponent matched. Returing your deposit.";
+            }
+            else {
+                //string memory st= uint2str(block.timestamp);
+                console.log("Block timestamp is ");
+                console.log(block.timestamp);
+                console.log("Time during registration is");
+                console.log(myregistertime);
+                return "Remaining time";
+            }
+            */
+        }
+
+
+    }
+
+    function refund(address payable addrA, uint value) private
+    {
+        addrA.transfer(value);
+    }
+    function uint2str(
+  uint256 _i
+)
+  internal
+  pure
+  returns (string memory str)
+{
+  if (_i == 0)
+  {
+    return "0";
+  }
+  uint256 j = _i;
+  uint256 length;
+  while (j != 0)
+  {
+    length++;
+    j /= 10;
+  }
+  bytes memory bstr = new bytes(length);
+  uint256 k = length;
+  j = _i;
+  while (j != 0)
+  {
+    bstr[--k] = bytes1(uint8(48 + j % 10));
+    j /= 10;
+  }
+  str = string(bstr);
 }
+}   

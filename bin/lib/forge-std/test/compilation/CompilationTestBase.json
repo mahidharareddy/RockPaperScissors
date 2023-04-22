@@ -1,0 +1,159 @@
+{
+    "contractName": "CompilationTestBase",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/vboxuser/git/rps/lib/forge-std/test/compilation/CompilationTestBase.sol\":\"CompilationTestBase\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/vboxuser/git/rps/lib/forge-std/lib/ds-test/src/test.sol\":{\"keccak256\":\"0x8758531bbac3972efcf1fa46383dbe1d276406fe527bc7abb2f236486278e83b\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://1f64264d61506847acf8761e84aff690cebe830958eac00bac7924d8be569240\",\"dweb:/ipfs/QmSekDJvJ82MZAmr63n7YvfLzQ7gS4NLSHPmHL3GN3rw8k\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/Base.sol\":{\"keccak256\":\"0x609e3a00319169988cc8272e837f350a9ba77cf8f8f62e4897a8e4a8a5f0fb27\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b24435e35ba5b080ebd6e8976c23fb735c7212d042be8462ffd2ea50c5250363\",\"dweb:/ipfs/QmPeVvN7FS4oMmCuYAeRdZihTfrG4tA7Vvunuvv59a6wre\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdAssertions.sol\":{\"keccak256\":\"0x46e6f2b6f71a76d743c87b2cdeae6e982685157eb238cf41dd5a9387152b312d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4f92b312f32c8225a728c897ac027b485ee7137a527878cdfd290350c39cdf83\",\"dweb:/ipfs/QmQSX5yBRaWMzrxc3hWVsWvYybDqcpwaftSMXfrEyQfyB2\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdChains.sol\":{\"keccak256\":\"0x260965186c4b36030b61bfff44312607b7d9bc03fa8b5e9c2581ffeb17d0053b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4c50e42ec13a54820d77ceb54e16f6efc1e9af2312ed39049ffbd1a5489cd0ee\",\"dweb:/ipfs/Qma1xCsmPhDfAZfDZGoFC7wuCTNXDhsBdFEZKnrZgTUj93\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdCheats.sol\":{\"keccak256\":\"0x0e6f32877ab26a83c9334eb5a000bf326bd2a0b04fea8647e045cea9c445f534\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8965978bfa66ddab8db95449a96ee47d44c62ebcb4271ab293e847f359a2ba7d\",\"dweb:/ipfs/QmazxpekoHnno4ySoNUct7NcKx6UJR7UvcMtJ9JYsBDEUh\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdError.sol\":{\"keccak256\":\"0xbf477b11a42d7611696956546bcfaa29317d1166bf65e402344599c05943fc77\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bc2e117d1135e030862b96a6526a43feb38d396cc79857f1fb696d4eff0e5fd6\",\"dweb:/ipfs/QmdSuQ5RrQudTLsNmWXGEeVJX8gR5U9XPm6m4dwwuQnJrj\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdInvariant.sol\":{\"keccak256\":\"0xd855e1fea6247f1bef118e2bee9f0039832988b7173fd17766bba4014ae26a3c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c58c0f0b66852dfd3c76fb7958d8b023489d7a874c7cb1ad4f2021f9ec8ab477\",\"dweb:/ipfs/Qmd3MX9HAkNUhPddL29ekwhqgRnjAobZ35UzchaJZNACCN\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdJson.sol\":{\"keccak256\":\"0x9e2a7521190c462a0667706385f1c52a816220a9813ca8ac520fba7ba45d660b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7d23017fe6570b28130a731b86179352b93a5fb5af32f11559837afc1186293c\",\"dweb:/ipfs/QmR3p6zG5Kmcr8gKocFCSopLHfXv1AziPJbH17nKyMxwxV\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdMath.sol\":{\"keccak256\":\"0xd90ad4fd8aeaeb8929964e686e769fdedd5eded3fc3815df194a0ab9f91a3fb2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7919b70f636c7b805223992f28ad1ad0145d6c1385b5931a3589aface5fe6c92\",\"dweb:/ipfs/QmY7FRaULwoGgFteF8GawjQJRfasNgpWnU2aiMsFrYpuTC\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdStorage.sol\":{\"keccak256\":\"0xd1517df281f973dba8b7ba52c02d3df552b60d91b8f47e4669049da648778673\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://52e43264f58a5dcfd985f3c99aa81064805aa8f1c2b4c6521fd63d45cdbba8d5\",\"dweb:/ipfs/QmUMTF6cRjt5tCQrrgQDXVRmHQLjevNsTvLFdaA1m9TBj9\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdStyle.sol\":{\"keccak256\":\"0x2882555b0f58e48144e46e9aa5118a506b31ad7485327d54e8f681e8b414c337\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2850bcb1322de9d9dd87ded42debbe0e8fc4048173788d4c00c98b50e5f76985\",\"dweb:/ipfs/QmUiPKnj7GZLLQbJGY7bVDu79Q9jGEYNjR5ZBgwFy8mH97\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/StdUtils.sol\":{\"keccak256\":\"0x1c58e6899314a94d6e99225481aaaa3e283050e7fddb5f72bebc244bc1fb4d21\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://11e6f36d32826f6f133248d1158a343b5201de5869553d46df56e7fd0163e3f3\",\"dweb:/ipfs/Qma3dZZiBCc8tTw6BjmjgYxyTSCBhW2nN4kPZwUSzFLMZd\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/Test.sol\":{\"keccak256\":\"0x89dbe9be5bc7633b50aabd8e2aaa388bc7b0d827432e2390349d615c2a4b77f2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1f16c220d39892a9789f0b1cb32141c64aa9e7594126b00b284901d4a4564c56\",\"dweb:/ipfs/QmYx1GL6Ea6pWmdyXENBgTZf9TkEP4bgMBwKUL9yzwrCBK\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/Vm.sol\":{\"keccak256\":\"0x609394b09bc0e0f4a3fb946c769dc75b4d4154b367503190ebd1e3ca12c23ca8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a57dfea18ea68df6f48cca1ed1c030541a5d0cf1c115725da8ae7c2ad6f41f1\",\"dweb:/ipfs/QmZ5owm2HG4jjTzkimL9zHZHSTHT5o81L3mPA24391PtmT\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/console.sol\":{\"keccak256\":\"0x91d5413c2434ca58fd278b6e1e79fd98d10c83931cc2596a6038eee4daeb34ba\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://91ccea707361e48b9b7a161fe81f496b9932bc471e9c4e4e1e9c283f2453cc70\",\"dweb:/ipfs/QmcB66sZhQ6Kz7MUHcLE78YXRUZxoZnnxZjN6yATsbB2ec\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/console2.sol\":{\"keccak256\":\"0xcd5706f5a7025825d9fd389c89b49bf571f9abaea8a062dc4048320b5b43bf46\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c066485a7d4bd18d44efb4c89274b0959e8066b9a480383a2ce07d7f31555f88\",\"dweb:/ipfs/QmckeYfA5FtAjcxaytq69Dpj6uY57tbQ61kNPPxXi9kgbW\"]},\"/home/vboxuser/git/rps/lib/forge-std/src/interfaces/IMulticall3.sol\":{\"keccak256\":\"0x7aac1389150499a922d1f9ef5749c908cef127cb2075b92fa17e9cb611263d0a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d95ebb7c7c463e08ebc12dab639945752fb2480acfc6e86da32f72732a7fd0c0\",\"dweb:/ipfs/QmNXK8P8oPWwajsQHvAHw3JPyQidPLCGQN3hWu1Lk6PBL2\"]},\"/home/vboxuser/git/rps/lib/forge-std/test/compilation/CompilationTestBase.sol\":{\"keccak256\":\"0xce0e6c48f97656682d55498062319fe6c9e93e074753ec23e7ed93a003bc0b75\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0694a38cd551d2d9c1af6111a1f65e88a2833ec9623c34cf93ddc8098bb9d4d5\",\"dweb:/ipfs/QmVJyShP3Sx2vqELGHJJKeUyyDEgVp28iXC9mqnFbd9muz\"]}},\"version\":1}",
+    "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212203c64ad570ef12c293a21f7527b5ea465b7d6775ad93834101135a7c0345ab27364736f6c63430008130033",
+    "deployedBytecode": "6080604052600080fdfea26469706673582212203c64ad570ef12c293a21f7527b5ea465b7d6775ad93834101135a7c0345ab27364736f6c63430008130033",
+    "sourceMap": "353:43:36:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "353:43:36:-:0;;;;;",
+    "sourcePath": "/home/vboxuser/git/rps/lib/forge-std/test/compilation/CompilationTestBase.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "/home/vboxuser/git/rps/lib/forge-std/test/compilation/CompilationTestBase.sol",
+        "exportedSymbols": {
+            "CompilationTestBase": [
+                45068
+            ],
+            "DSTest": [
+                3165
+            ],
+            "StdAssertions": [
+                6334
+            ],
+            "StdChains": [
+                7028
+            ],
+            "StdCheats": [
+                9304
+            ],
+            "StdInvariant": [
+                9594
+            ],
+            "StdStorage": [
+                10344
+            ],
+            "StdStyle": [
+                12988
+            ],
+            "StdUtils": [
+                13795
+            ],
+            "Test": [
+                13844
+            ],
+            "TestBase": [
+                4867
+            ],
+            "Vm": [
+                15203
+            ],
+            "console": [
+                23267
+            ],
+            "console2": [
+                31363
+            ],
+            "stdError": [
+                9370
+            ],
+            "stdJson": [
+                10170
+            ],
+            "stdMath": [
+                10312
+            ],
+            "stdStorage": [
+                11777
+            ]
+        },
+        "id": 45069,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 45063,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.6",
+                    ".2",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "32:31:36"
+            },
+            {
+                "id": 45064,
+                "literals": [
+                    "experimental",
+                    "ABIEncoderV2"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "65:33:36"
+            },
+            {
+                "absolutePath": "/home/vboxuser/git/rps/lib/forge-std/src/Test.sol",
+                "file": "../../src/Test.sol",
+                "id": 45065,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 45069,
+                "sourceUnit": 13845,
+                "src": "100:28:36",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 45066,
+                            "name": "TestBase",
+                            "nameLocations": [
+                                "385:8:36"
+                            ],
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 4867,
+                            "src": "385:8:36"
+                        },
+                        "id": 45067,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "385:8:36"
+                    }
+                ],
+                "canonicalName": "CompilationTestBase",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 45068,
+                "linearizedBaseContracts": [
+                    45068,
+                    4867,
+                    4864
+                ],
+                "name": "CompilationTestBase",
+                "nameLocation": "362:19:36",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 45069,
+                "src": "353:43:36",
+                "usedErrors": []
+            }
+        ],
+        "src": "32:365:36"
+    },
+    "functionHashes": {},
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "12600",
+            "executionCost": "66",
+            "totalCost": "12666"
+        }
+    }
+}

@@ -995,8 +995,8 @@
       }
     },
     "src/rpstest.sol": {
-      "lastModificationDate": 1681966372259,
-      "contentHash": "94ea943e2f080136ab9145a98bf630b8",
+      "lastModificationDate": 1682124937676,
+      "contentHash": "dae4a7c097571372c126c9d221d6bd5c",
       "sourceName": "src/rpstest.sol",
       "solcConfig": {
         "settings": {
@@ -1049,6 +1049,64 @@
       "artifacts": {
         "RockPaperScissors": {
           "0.8.19+commit.7dd6d404.Linux.gcc": "rpstest.sol/RockPaperScissors.json"
+        }
+      }
+    },
+    "src/rpstest2.sol": {
+      "lastModificationDate": 1682097587112,
+      "contentHash": "a259b497fa8a1158bebb78fc5cacf01d",
+      "sourceName": "src/rpstest2.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/forge-std/lib/ds-test/src/test.sol",
+        "lib/forge-std/src/Base.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdChains.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdInvariant.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdStyle.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src/Test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "lib/forge-std/src/interfaces/IMulticall3.sol"
+      ],
+      "versionRequirement": "^0.8.17",
+      "artifacts": {
+        "RockPaperScissors": {
+          "0.8.19+commit.7dd6d404.Linux.gcc": "rpstest2.sol/RockPaperScissors.json"
         }
       }
     },
