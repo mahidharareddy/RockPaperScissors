@@ -1,0 +1,1 @@
+[{"inputs":[{"internalType":"bytes","name":"returnData_","type":"bytes"},{"internalType":"bool","name":"shouldRevert_","type":"bool"}],"stateMutability":"nonpayable","type":"constructor"},{"stateMutability":"payable","type":"fallback"}]
